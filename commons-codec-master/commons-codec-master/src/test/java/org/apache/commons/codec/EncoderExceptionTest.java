@@ -36,6 +36,11 @@ public class EncoderExceptionTest {
     public void testConstructor0() {
         final EncoderException e = new EncoderException();
         assertNull(e.getMessage());
+    }
+
+    @Test
+    public void testConstructor1() {
+        final EncoderException e = new EncoderException();
         assertNull(e.getCause());
     }
 
@@ -43,6 +48,11 @@ public class EncoderExceptionTest {
     public void testConstructorString() {
         final EncoderException e = new EncoderException(MSG);
         assertEquals(MSG, e.getMessage());
+    }
+
+    @Test
+    public void testConstructorString1() {
+        final EncoderException e = new EncoderException(MSG);
         assertNull(e.getCause());
     }
 
@@ -50,6 +60,11 @@ public class EncoderExceptionTest {
     public void testConstructorStringThrowable() {
         final EncoderException e = new EncoderException(MSG, t);
         assertEquals(MSG, e.getMessage());
+    }
+
+    @Test
+    public void testConstructorStringThrowable1() {
+        final EncoderException e = new EncoderException(MSG, t);
         assertEquals(t, e.getCause());
     }
 
@@ -57,6 +72,11 @@ public class EncoderExceptionTest {
     public void testConstructorThrowable() {
         final EncoderException e = new EncoderException(t);
         assertEquals(t.getClass().getName(), e.getMessage());
+    }
+
+    @Test
+    public void testConstructorThrowable1() {
+        final EncoderException e = new EncoderException(t);
         assertEquals(t, e.getCause());
     }
 

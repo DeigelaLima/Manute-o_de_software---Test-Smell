@@ -68,12 +68,11 @@ public class URLCodecTest {
 
         assertEquals(
             "%D0%92%D1%81%D0%B5%D0%BC_%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82",
-            urlCodec.encode(ru_msg, CharEncoding.UTF_8)
+            urlCodec.encode(ru_msg, CharEncoding.UTF_8), "Comparando mensagens"
         );
-        assertEquals("Gr%C3%BCezi_z%C3%A4m%C3%A4", urlCodec.encode(ch_msg, CharEncoding.UTF_8));
-
-        assertEquals(ru_msg, urlCodec.decode(urlCodec.encode(ru_msg, CharEncoding.UTF_8), CharEncoding.UTF_8));
-        assertEquals(ch_msg, urlCodec.decode(urlCodec.encode(ch_msg, CharEncoding.UTF_8), CharEncoding.UTF_8));
+        assertEquals("Gr%C3%BCezi_z%C3%A4m%C3%A4", urlCodec.encode(ch_msg, CharEncoding.UTF_8), "Comparando mensagens");
+        assertEquals(ru_msg, urlCodec.decode(urlCodec.encode(ru_msg, CharEncoding.UTF_8), CharEncoding.UTF_8), "Comparando mensagens");
+        assertEquals(ch_msg, urlCodec.decode(urlCodec.encode(ch_msg, CharEncoding.UTF_8), CharEncoding.UTF_8), "Comparando mensagens");
         this.validateState(urlCodec);
     }
 
@@ -82,8 +81,8 @@ public class URLCodecTest {
         final URLCodec urlCodec = new URLCodec();
         final String plain = "Hello there!";
         final String encoded = urlCodec.encode(plain);
-        assertEquals("Hello+there%21", encoded, "Basic URL encoding test");
-        assertEquals(plain, urlCodec.decode(encoded), "Basic URL decoding test");
+        assertEquals("Hello+there%21", encoded, "Teste básico de codificação de URL");
+        assertEquals(plain, urlCodec.decode(encoded), "Teste básico de decodificação de URL");
         this.validateState(urlCodec);
     }
 

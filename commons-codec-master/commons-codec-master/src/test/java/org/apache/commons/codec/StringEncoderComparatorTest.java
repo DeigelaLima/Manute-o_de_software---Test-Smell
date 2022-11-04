@@ -41,6 +41,8 @@ public class StringEncoderComparatorTest {
                 "O'Brien and O'Brian didn't come out with the same Soundex, something must be wrong here");
     }
 
+    
+
     @SuppressWarnings("unchecked") // cannot easily avoid this warning
     @Test
     public void testComparatorWithDoubleMetaphone() throws Exception {
