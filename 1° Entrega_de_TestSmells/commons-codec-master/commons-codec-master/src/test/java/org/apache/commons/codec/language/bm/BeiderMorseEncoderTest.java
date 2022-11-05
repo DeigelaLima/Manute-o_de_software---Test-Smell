@@ -22,6 +22,7 @@ import org.apache.commons.codec.StringEncoder;
 import org.apache.commons.codec.StringEncoderAbstractTest;
 import org.junit.jupiter.api.Test;
 
+import java.beans.Transient;
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -135,15 +136,21 @@ public class BeiderMorseEncoderTest extends StringEncoderAbstractTest<StringEnco
     }
 
     @Test
-    public void testOOM() throws EncoderException {
-        final String phrase = "200697900'-->&#1913348150;</  bceaeef >aadaabcf\"aedfbff<!--\'-->?>cae" +
-            "cfaaa><?&#<!--</script>&lang&fc;aadeaf?>>&bdquo<    cc =\"abff\"    /></   afe  >" +
-            "<script><!-- f(';<    cf aefbeef = \"bfabadcf\" ebbfeedd = fccabeb >";
-
+    public void test00M() throws EncoderException{
         final BeiderMorseEncoder encoder = new BeiderMorseEncoder();
         encoder.setNameType(NameType.GENERIC);
         encoder.setRuleType(RuleType.EXACT);
         encoder.setMaxPhonemes(10);
+
+        test00M1(encoder);
+
+    }
+
+    @Test
+    public void testOOM1() throws EncoderException {
+        final String phrase = "200697900'-->&#1913348150;</  bceaeef >aadaabcf\"aedfbff<!--\'-->?>cae" +
+            "cfaaa><?&#<!--</script>&lang&fc;aadeaf?>>&bdquo<    cc =\"abff\"    /></   afe  >" +
+            "<script><!-- f(';<    cf aefbeef = \"bfabadcf\" ebbfeedd = fccabeb >";
 
         final String phonemes = encoder.encode(phrase);
         assertFalse(phonemes.isEmpty());
