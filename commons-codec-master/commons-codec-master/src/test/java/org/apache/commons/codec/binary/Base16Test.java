@@ -471,22 +471,11 @@ public class Base16Test {
         assertFalse(b16.isInAlphabet((byte)128));
         assertFalse(b16.isInAlphabet((byte)255));
 
-        // lower-case
-        b16 = new Base16(true);
-        for (char c = '0'; c <= '9'; c++) {
-            assertTrue(b16.isInAlphabet((byte) c));
-        }
-        for (char c = 'a'; c <= 'f'; c++) {
-            assertTrue(b16.isInAlphabet((byte) c));
-        }
-        for (char c = 'A'; c <= 'F'; c++) {
-            assertFalse(b16.isInAlphabet((byte) c));
-        }
-        assertFalse(b16.isInAlphabet((byte) ('0' - 1)));
-        assertFalse(b16.isInAlphabet((byte) ('9' + 1)));
-        assertFalse(b16.isInAlphabet((byte) ('a' - 1)));
-        assertFalse(b16.isInAlphabet((byte) ('f' + 1)));
-        assertFalse(b16.isInAlphabet((byte) ('z' + 1)));
+        testIsInAlphabetUpper(b16);
+        testIsInAlphabetLower(b16);
+    }
+    
+    public void testIsInAlphabetUpper(Base16 b16) {
 
         // upper-case
         b16 = new Base16(false);
@@ -504,6 +493,27 @@ public class Base16Test {
         assertFalse(b16.isInAlphabet((byte) ('A' - 1)));
         assertFalse(b16.isInAlphabet((byte) ('F' + 1)));
         assertFalse(b16.isInAlphabet((byte) ('Z' + 1)));
+    }
+
+    public void testIsInAlphabetLower(Base16 b16) {
+
+        // lower-case
+        b16 = new Base16(true);
+        for (char c = '0'; c <= '9'; c++) {
+            assertTrue(b16.isInAlphabet((byte) c));
+        }
+        for (char c = 'a'; c <= 'f'; c++) {
+            assertTrue(b16.isInAlphabet((byte) c));
+        }
+        for (char c = 'A'; c <= 'F'; c++) {
+            assertFalse(b16.isInAlphabet((byte) c));
+        }
+        assertFalse(b16.isInAlphabet((byte) ('0' - 1)));
+        assertFalse(b16.isInAlphabet((byte) ('9' + 1)));
+        assertFalse(b16.isInAlphabet((byte) ('a' - 1)));
+        assertFalse(b16.isInAlphabet((byte) ('f' + 1)));
+        assertFalse(b16.isInAlphabet((byte) ('z' + 1)));
+     
     }
 
     @Test
@@ -542,6 +552,11 @@ public class Base16Test {
         assertEquals(0, context.ibitWorkArea);
         assertNull(context.buffer);
 
+        testDecodeSingleBytesOptimisation1(context);
+    }
+
+    public void testDecodeSingleBytesOptimisation1(BaseNCodec.Context context) {
+        
         final byte[] data = new byte[1];
 
         final Base16 b16 = new Base16();
