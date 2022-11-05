@@ -152,7 +152,6 @@ public class BeiderMorseEncoderTest extends StringEncoderAbstractTest<StringEnco
             "cfaaa><?&#<!--</script>&lang&fc;aadeaf?>>&bdquo<    cc =\"abff\"    /></   afe  >" +
             "<script><!-- f(';<    cf aefbeef = \"bfabadcf\" ebbfeedd = fccabeb >";
 
-
         final String phonemes = encoder.encode(phrase);
         assertFalse(phonemes.isEmpty());
 
