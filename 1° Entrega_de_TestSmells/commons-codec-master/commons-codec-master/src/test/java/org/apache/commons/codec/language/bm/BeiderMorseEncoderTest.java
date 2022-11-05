@@ -142,7 +142,7 @@ public class BeiderMorseEncoderTest extends StringEncoderAbstractTest<StringEnco
         encoder.setRuleType(RuleType.EXACT);
         encoder.setMaxPhonemes(10);
 
-        test00M1(encoder);
+        test00M1(encoder);//
 
     }
 
