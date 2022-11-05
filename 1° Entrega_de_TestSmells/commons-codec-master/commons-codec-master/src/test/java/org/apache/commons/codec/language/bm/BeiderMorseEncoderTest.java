@@ -145,7 +145,7 @@ public class BeiderMorseEncoderTest extends StringEncoderAbstractTest<StringEnco
         test00M1(encoder);
 
     }
-
+    //aqui
     @Test
     public void testOOM1() throws EncoderException {
         final String phrase = "200697900'-->&#1913348150;</  bceaeef >aadaabcf\"aedfbff<!--\'-->?>cae" +
