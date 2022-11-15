@@ -17,15 +17,14 @@
 
 package org.apache.commons.math4.legacy.analysis.function;
 
+import org.apache.commons.math4.core.jdkmath.JdkMath;
 import org.apache.commons.math4.legacy.analysis.UnivariateFunction;
 import org.apache.commons.math4.legacy.analysis.differentiation.DerivativeStructure;
 import org.apache.commons.math4.legacy.analysis.differentiation.UnivariateDifferentiableFunction;
 import org.apache.commons.math4.legacy.exception.DimensionMismatchException;
 import org.apache.commons.math4.legacy.exception.NotStrictlyPositiveException;
 import org.apache.commons.math4.legacy.exception.NullArgumentException;
-import org.apache.commons.math4.core.jdkmath.JdkMath;
 import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * Test for class {@link Gaussian}.
@@ -42,17 +41,23 @@ public class GaussianTest {
     public void testSomeValues() {
         final UnivariateFunction f = new Gaussian();
 
-        Assert.assertEquals(1 / JdkMath.sqrt(2 * Math.PI), f.value(0), EPS);
+        double valorEsperado = 1 / JdkMath.sqrt(2 * Math.PI);
+        double variacaoPermitida = EPS;
+
+        Assert.assertEquals(valorEsperado, f.value(0), variacaoPermitida);
     }
 
     @Test
     public void testLargeArguments() {
         final UnivariateFunction f = new Gaussian();
 
-        Assert.assertEquals(0, f.value(Double.NEGATIVE_INFINITY), 0);
-        Assert.assertEquals(0, f.value(-Double.MAX_VALUE), 0);
-        Assert.assertEquals(0, f.value(-1e2), 0);
-        Assert.assertEquals(0, f.value(1e2), 0);
+        double valorEsperado = 0;
+        double variacaoPermitida = 0;
+
+        Assert.assertEquals(valorEsperado, f.value(Double.NEGATIVE_INFINITY), variacaoPermitida);
+        Assert.assertEquals(valorEsperado, f.value(-Double.MAX_VALUE), variacaoPermitida);
+        Assert.assertEquals(valorEsperado, f.value(-1e2), variacaoPermitida);
+        Assert.assertEquals(valorEsperado, f.value(1e2), variacaoPermitida);
         Assert.assertEquals(0, f.value(Double.MAX_VALUE), 0);
         Assert.assertEquals(0, f.value(Double.POSITIVE_INFINITY), 0);
     }

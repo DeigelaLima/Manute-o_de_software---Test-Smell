@@ -18,11 +18,10 @@
 package org.apache.commons.math4.legacy.linear;
 
 import java.util.Iterator;
-
 import org.apache.commons.math4.legacy.linear.RealVector.Entry;
 import org.junit.Assert;
 import org.junit.Ignore;
-import org.junit.Test;
+
 
 /**
  * Tests for {@link RealVector}.
@@ -76,40 +75,7 @@ public class RealVectorTest extends RealVectorAbstractTest{
         // Do nothing
     }
 
-    @Test
-    @Ignore("Abstract class RealVector does not implement getSubvector(int, int)")
-    @Override
-    public void testGetSubVectorInvalidIndex4() {
-        // Do nothing
-    }
-
-    @Test
-    @Ignore("Abstract class RealVector does not implement setSubvector(int, RealVector)")
-    @Override
-    public void testSetSubVectorSameType() {
-        // Do nothing
-    }
-
-    @Test
-    @Ignore("Abstract class RealVector does not implement setSubvector(int, RealVector)")
-    @Override
-    public void testSetSubVectorMixedType() {
-        // Do nothing
-    }
-
-    @Test
-    @Ignore("Abstract class RealVector does not implement setSubvector(int, RealVector)")
-    @Override
-    public void testSetSubVectorInvalidIndex1() {
-        // Do nothing
-    }
-
-    @Test
-    @Ignore("Abstract class RealVector does not implement setSubvector(int, RealVector)")
-    @Override
-    public void testSetSubVectorInvalidIndex2() {
-        // Do nothing
-    }
+    // apaguei os métodos vazios (todos os 5)
 
     @Test
     @Ignore("Abstract class RealVector does not implement setSubvector(int, RealVector)")
