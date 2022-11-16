@@ -76,40 +76,21 @@ public class RealVectorTest extends RealVectorAbstractTest{
         // Do nothing
     }
 
+    // Refatoração - método apagado das linhas 79 - 84
     @Test
     @Ignore("Abstract class RealVector does not implement getSubvector(int, int)")
     @Override
     public void testGetSubVectorInvalidIndex4() {
         // Do nothing
     }
-
-    @Test
-    @Ignore("Abstract class RealVector does not implement setSubvector(int, RealVector)")
-    @Override
-    public void testSetSubVectorSameType() {
-        // Do nothing
-    }
-
-    @Test
-    @Ignore("Abstract class RealVector does not implement setSubvector(int, RealVector)")
-    @Override
-    public void testSetSubVectorMixedType() {
-        // Do nothing
-    }
-
-    @Test
-    @Ignore("Abstract class RealVector does not implement setSubvector(int, RealVector)")
-    @Override
-    public void testSetSubVectorInvalidIndex1() {
-        // Do nothing
-    }
-
-    @Test
-    @Ignore("Abstract class RealVector does not implement setSubvector(int, RealVector)")
-    @Override
-    public void testSetSubVectorInvalidIndex2() {
-        // Do nothing
-    }
+    
+    // Refatoração - método apagado das linhas 86 - 91
+ 
+    // Refatoração - método apagado das linhas 93 - 98
+   
+    // Refatoração - método apagado das linhas 100 - 105
+   
+    // Refatoração - método apagado das linhas 107 - 112
 
     @Test
     @Ignore("Abstract class RealVector does not implement setSubvector(int, RealVector)")
