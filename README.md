@@ -1,3 +1,8 @@
 # Manutenção_de_software---Test-Smell
 
-Referência : https://github.com/apache/commons-codec
+### Referências : 
+
+             https://github.com/apache/commons-codec
+_______________________________________________________________________
+
+             https://github.com/apache/commons-math
