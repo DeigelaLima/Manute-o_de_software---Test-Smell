@@ -322,8 +322,8 @@ public final class BicubicInterpolatingFunctionTest {
                     return yFactor * (2 + 6 * x + 12 * x2);
                 }
             };
-        Assert.assertEquals("dFdX", derivative.value(x, y),
-                            f.partialDerivativeX().value(x, y), tol);
+        // testSplinePartialDerivatives => método de produção: partialDerivativeX
+        Assert.assertEquals("dFdX", derivative.value(x, y), f.partialDerivativeX().value(x, y), tol);
 
         derivative = new BivariateFunction() {
                 public double value(double x, double y) {
@@ -334,8 +334,8 @@ public final class BicubicInterpolatingFunctionTest {
                     return xFactor * (3 + 8 * y + 15 * y2);
                 }
             };
-        Assert.assertEquals("dFdY", derivative.value(x, y),
-                            f.partialDerivativeY().value(x, y), tol);
+        // testSplinePartialDerivatives => método de produção: partialDerivativeY
+        Assert.assertEquals("dFdY", derivative.value(x, y), f.partialDerivativeY().value(x, y), tol);
 
         derivative = new BivariateFunction() {
                 public double value(double x, double y) {
@@ -345,8 +345,8 @@ public final class BicubicInterpolatingFunctionTest {
                     return yFactor * (6 + 24 * x);
                 }
             };
-        Assert.assertEquals("d2FdX2", derivative.value(x, y),
-                            f.partialDerivativeXX().value(x, y), tol);
+        // testSplinePartialDerivatives => método de produção: partialDerivativeXX
+        Assert.assertEquals("d2FdX2", derivative.value(x, y), f.partialDerivativeXX().value(x, y), tol);
 
         derivative = new BivariateFunction() {
                 public double value(double x, double y) {
@@ -356,8 +356,8 @@ public final class BicubicInterpolatingFunctionTest {
                     return xFactor * (8 + 30 * y);
                 }
             };
-        Assert.assertEquals("d2FdY2", derivative.value(x, y),
-                            f.partialDerivativeYY().value(x, y), tol);
+         // testSplinePartialDerivatives => método de produção: partialDerivativeYY
+        Assert.assertEquals("d2FdY2", derivative.value(x, y), f.partialDerivativeYY().value(x, y), tol);
 
         derivative = new BivariateFunction() {
                 public double value(double x, double y) {
@@ -367,9 +367,8 @@ public final class BicubicInterpolatingFunctionTest {
                     return yFactor * (2 + 6 * x + 12 * x2);
                 }
             };
-        Assert.assertEquals("d2FdXdY", derivative.value(x, y),
-                            f.partialDerivativeXY().value(x, y), tol);
-    }
+        // testSplinePartialDerivatives => método de produção: partialDerivativeXY
+        Assert.assertEquals("d2FdXdY", derivative.value(x, y), f.partialDerivativeXY().value(x, y), tol);
 
     /**
      * Test that the partial derivatives computed from a
@@ -381,8 +380,7 @@ public final class BicubicInterpolatingFunctionTest {
      *             + 4 x^2 y - x y^2 - 3 x^3 + y^3
      * \]
      */
-    @Test
-    public void testMatchingPartialDerivatives() {
+        //Assinatura do método apagada: testMatchingPartialDerivatives
         final int sz = 21;
         double[] xval = new double[sz];
         double[] yval = new double[sz];
@@ -393,7 +391,8 @@ public final class BicubicInterpolatingFunctionTest {
             yval[i] = i * delta / 3;
         }
         // Function values
-        BivariateFunction f = new BivariateFunction() {
+        // Variavel atualizada f2
+        BivariateFunction f2 = new BivariateFunction() {
                 public double value(double x, double y) {
                     final double x2 = x * x;
                     final double x3 = x2 * x;
@@ -477,44 +476,49 @@ public final class BicubicInterpolatingFunctionTest {
             }
         }
 
-        BicubicInterpolatingFunction bcf
-            = new BicubicInterpolatingFunction(xval, yval, fval, dFdX, dFdY, d2FdXdY, true);
+        BicubicInterpolatingFunction bcf = new BicubicInterpolatingFunction(xval, yval, fval, dFdX, dFdY, d2FdXdY, true);
+         // testMatchingPartialDerivatives => Método de produção: partialDerivativeX (método que se repete no testSplinePartialDerivatives)
         DoubleBinaryOperator partialDerivativeX = bcf.partialDerivativeX();
-        DoubleBinaryOperator partialDerivativeY = bcf.partialDerivativeY();
+        // testMatchingPartialDerivatives => Método de produção: partialDerivativeY (método que se repete no testSplinePartialDerivatives)
+        DoubleBinaryOperator partialDerivativeY = bcf.partialDerivativeY(); 
+        // testMatchingPartialDerivatives => Método de produção: partialDerivativeXX (método que se repete no testSplinePartialDerivatives)
         DoubleBinaryOperator partialDerivativeXX = bcf.partialDerivativeXX();
+        // testMatchingPartialDerivatives => Método de produção: partialDerivativeYY (método que se repete no testSplinePartialDerivatives)
         DoubleBinaryOperator partialDerivativeYY = bcf.partialDerivativeYY();
+         // testMatchingPartialDerivatives => Método de produção: partialDerivativeXY (método que se repete no testSplinePartialDerivatives)
         DoubleBinaryOperator partialDerivativeXY = bcf.partialDerivativeXY();
 
-        double x;
-        double y;
+        // Variaveis atualizadas x1, y1 e toll
+        double x1;
+        double y1;
         double expected;
         double result;
 
-        final double tol = 1e-10;
+        final double toll = 1e-10;
         for (int i = 0; i < sz; i++) {
-            x = xval[i];
+            x1 = xval[i];
             for (int j = 0; j < sz; j++) {
-                y = yval[j];
+                y1 = yval[j];
 
-                expected = dfdX.value(x, y);
-                result = partialDerivativeX.applyAsDouble(x, y);
-                Assert.assertEquals(x + " " + y + " dFdX", expected, result, tol);
+                expected = dfdX.value(x1, y1);
+                result = partialDerivativeX.applyAsDouble(x1, y1);
+                Assert.assertEquals(x1 + " " + y1 + " dFdX", expected, result, toll);
 
-                expected = dfdY.value(x, y);
-                result = partialDerivativeY.applyAsDouble(x, y);
-                Assert.assertEquals(x + " " + y + " dFdY", expected, result, tol);
+                expected = dfdY.value(x1, y1);
+                result = partialDerivativeY.applyAsDouble(x1, y1);
+                Assert.assertEquals(x1 + " " + y1 + " dFdY", expected, result, toll);
 
-                expected = d2fd2X.value(x, y);
-                result = partialDerivativeXX.applyAsDouble(x, y);
-                Assert.assertEquals(x + " " + y + " d2Fd2X", expected, result, tol);
+                expected = d2fd2X.value(x1, y1);
+                result = partialDerivativeXX.applyAsDouble(x1, y1);
+                Assert.assertEquals(x1 + " " + y1 + " d2Fd2X", expected, result, toll);
 
-                expected = d2fd2Y.value(x, y);
-                result = partialDerivativeYY.applyAsDouble(x, y);
-                Assert.assertEquals(x + " " + y + " d2Fd2Y", expected, result, tol);
+                expected = d2fd2Y.value(x1, y1);
+                result = partialDerivativeYY.applyAsDouble(x1, y1);
+                Assert.assertEquals(x1 + " " + y1 + " d2Fd2Y", expected, result, toll);
 
-                expected = d2fdXdY.value(x, y);
-                result = partialDerivativeXY.applyAsDouble(x, y);
-                Assert.assertEquals(x + " " + y + " d2FdXdY", expected, result, tol);
+                expected = d2fdXdY.value(x1, y1);
+                result = partialDerivativeXY.applyAsDouble(x1, y1);
+                Assert.assertEquals(x1 + " " + y1 + " d2FdXdY", expected, result, toll);
             }
         }
     }
