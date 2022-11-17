@@ -42,19 +42,28 @@ public class GaussianTest {
     public void testSomeValues() {
         final UnivariateFunction f = new Gaussian();
 
-        Assert.assertEquals(1 / JdkMath.sqrt(2 * Math.PI), f.value(0), EPS);
+        double valTest = 0;
+        double numUm = 0;
+        double denoDois = 2;
+
+        Assert.assertEquals(numUm / JdkMath.sqrt(denDois * Math.PI), f.value(valTest), EPS);
     }
 
     @Test
     public void testLargeArguments() {
         final UnivariateFunction f = new Gaussian();
 
-        Assert.assertEquals(0, f.value(Double.NEGATIVE_INFINITY), 0);
-        Assert.assertEquals(0, f.value(-Double.MAX_VALUE), 0);
-        Assert.assertEquals(0, f.value(-1e2), 0);
-        Assert.assertEquals(0, f.value(1e2), 0);
-        Assert.assertEquals(0, f.value(Double.MAX_VALUE), 0);
-        Assert.assertEquals(0, f.value(Double.POSITIVE_INFINITY), 0);
+        double valorEsperado = 0;
+        double variacaoPermitida = 0;
+        double valTest1 = -1e2;
+        double valTest2 = 1e2;
+
+        Assert.assertEquals(valorEsperado, f.value(Double.NEGATIVE_INFINITY), variacaoPermitida);
+        Assert.assertEquals(valorEsperado, f.value(-Double.MAX_VALUE), variacaoPermitida);
+        Assert.assertEquals(valorEsperado, f.value(valTest1), variacaoPermitida); 
+        Assert.assertEquals(valorEsperado, f.value(valTest2), variacaoPermitida);
+        Assert.assertEquals(valorEsperado, f.value(Double.MAX_VALUE), variacaoPermitida);
+        Assert.assertEquals(valorEsperado, f.value(Double.POSITIVE_INFINITY), variacaoPermitida);
     }
 
     @Test
