@@ -42,9 +42,8 @@ public class GaussianTest {
         final UnivariateFunction f = new Gaussian();
 
         double valorEsperado = 1 / JdkMath.sqrt(2 * Math.PI);
-        double variacaoPermitida = EPS;
-
-        Assert.assertEquals(valorEsperado, f.value(0), variacaoPermitida);
+        
+        Assert.assertEquals(valorEsperado, f.value(0), EPS);
     }
 
     @Test
