@@ -77,12 +77,6 @@ public class RealVectorTest extends RealVectorAbstractTest{
     }
 
     // Refatoração - método apagado das linhas 79 - 84
-    @Test
-    @Ignore("Abstract class RealVector does not implement getSubvector(int, int)")
-    @Override
-    public void testGetSubVectorInvalidIndex4() {
-        // Do nothing
-    }
     
     // Refatoração - método apagado das linhas 86 - 91
  
