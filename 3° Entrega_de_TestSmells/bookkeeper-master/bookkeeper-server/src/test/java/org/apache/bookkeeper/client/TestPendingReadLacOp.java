@@ -22,11 +22,11 @@ package org.apache.bookkeeper.client;
 
 import static org.junit.Assert.assertEquals;
 
-import io.netty.buffer.Unpooled;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import org.apache.bookkeeper.test.BookKeeperClusterTestCase;
 import org.apache.bookkeeper.util.ByteBufList;
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +39,7 @@ public class TestPendingReadLacOp extends BookKeeperClusterTestCase {
     byte[] pwd = "asdf".getBytes();
     byte[] data = "foo".getBytes();
 
+    @Before
     public TestPendingReadLacOp() {
         super(3);
     }

@@ -83,6 +83,7 @@ public class BookKeeperTest extends BookKeeperClusterTestCase {
     private static final long INVALID_LEDGERID = -1L;
     private final DigestType digestType;
 
+    @Before
     public BookKeeperTest() {
         super(3);
         this.digestType = DigestType.CRC32;

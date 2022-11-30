@@ -24,7 +24,6 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import com.google.common.collect.Lists;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ import java.util.Iterator;
 import java.util.List;
 import org.apache.bookkeeper.client.api.LedgerEntry;
 import org.junit.After;
-import org.junit.Test;
+import org.junit.Before;
 
 /**
  * Unit test for {@link LedgerEntriesImpl}.
@@ -49,6 +48,7 @@ public class LedgerEntriesImplTest {
     private final byte[] dataBytes = "test-ledger-entry-impl".getBytes(UTF_8);
     private final ArrayList<ByteBuf> bufs = Lists.newArrayListWithExpectedSize(entryNumber);
 
+    @Before
     public LedgerEntriesImplTest () {
         for (int i = 0; i < entryNumber; i++) {
             ByteBuf buf = Unpooled.wrappedBuffer(dataBytes);
