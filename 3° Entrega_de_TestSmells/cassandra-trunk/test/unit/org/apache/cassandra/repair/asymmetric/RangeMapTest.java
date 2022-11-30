@@ -24,12 +24,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-
-import org.junit.Test;
-
 import org.apache.cassandra.dht.Murmur3Partitioner;
 import org.apache.cassandra.dht.Range;
 import org.apache.cassandra.dht.Token;
+import org.junit.Test;
+
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -70,8 +70,7 @@ public class RangeMapTest
                 assertFalse("seed:"+seed, intersectionRange.intersects(entry.getKey()));
 
             assertEquals("seed:"+seed, expected, intersection);
-            if (++iterCount % 1000 == 0)
-                 System.out.println(iterCount);
+            
         }
     }
 

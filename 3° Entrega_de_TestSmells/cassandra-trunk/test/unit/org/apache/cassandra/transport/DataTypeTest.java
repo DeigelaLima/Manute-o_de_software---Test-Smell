@@ -18,19 +18,19 @@
 
 package org.apache.cassandra.transport;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Test;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.cassandra.db.TypeSizes;
 import org.apache.cassandra.db.marshal.AbstractType;
 import org.apache.cassandra.db.marshal.AsciiType;
 import org.apache.cassandra.db.marshal.LongType;
 import org.apache.cassandra.utils.Pair;
+import org.junit.Test;
+
+
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -78,7 +78,7 @@ public class DataTypeTest
         DataType.codec.writeOne(options, dest, version);
         Pair<DataType, Object> result = DataType.codec.decodeOne(dest, version);
 
-        System.out.println(result + "version " + version);
+        
         int ssize = type.serializedValueSize(result.right, version);
         int esize = version.isSmallerThan(type.getProtocolVersion()) ? 2 + TypeSizes.encodedUTF8Length(result.right.toString()) : 0;
         switch (type)

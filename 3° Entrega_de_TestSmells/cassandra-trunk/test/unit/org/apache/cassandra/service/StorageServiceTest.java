@@ -159,7 +159,7 @@ public class StorageServiceTest
         AbstractReplicationStrategy strat = simpleStrategy(tmd);
 
         EndpointsByReplica result = StorageService.getChangedReplicasForLeaving("StorageServiceTest", aAddress, tmd, strat);
-        System.out.println(result);
+        
         EndpointsByReplica.Builder expectedResult = new EndpointsByReplica.Builder();
         expectedResult.put(new Replica(aAddress, aRange, true), new Replica(cAddress, new Range<>(oneToken, sixToken), true));
         expectedResult.put(new Replica(aAddress, aRange, true), new Replica(dAddress, new Range<>(oneToken, sixToken), false));
