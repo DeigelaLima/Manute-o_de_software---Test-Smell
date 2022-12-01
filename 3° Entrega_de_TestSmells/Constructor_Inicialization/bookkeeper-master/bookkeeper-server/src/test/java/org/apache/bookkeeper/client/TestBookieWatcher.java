@@ -46,6 +46,7 @@ import org.junit.Test;
  */
 public class TestBookieWatcher extends BookKeeperClusterTestCase {
 
+    @Before
     public TestBookieWatcher() {
         super(2);
     }

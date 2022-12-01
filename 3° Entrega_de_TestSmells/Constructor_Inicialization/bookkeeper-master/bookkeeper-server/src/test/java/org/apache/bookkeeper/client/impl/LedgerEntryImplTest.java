@@ -41,6 +41,7 @@ public class LedgerEntryImplTest {
     private final ByteBuf dataBuf;
     private final LedgerEntryImpl entryImpl;
 
+    @Before
     public LedgerEntryImplTest() {
         this.ledgerId = 1234L;
         this.entryId = 3579L;

@@ -49,6 +49,7 @@ public class LedgerEntriesImplTest {
     private final byte[] dataBytes = "test-ledger-entry-impl".getBytes(UTF_8);
     private final ArrayList<ByteBuf> bufs = Lists.newArrayListWithExpectedSize(entryNumber);
 
+    @Before
     public LedgerEntriesImplTest () {
         for (int i = 0; i < entryNumber; i++) {
             ByteBuf buf = Unpooled.wrappedBuffer(dataBytes);

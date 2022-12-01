@@ -39,6 +39,7 @@ public class TestPendingReadLacOp extends BookKeeperClusterTestCase {
     byte[] pwd = "asdf".getBytes();
     byte[] data = "foo".getBytes();
 
+    @Before
     public TestPendingReadLacOp() {
         super(3);
     }
