@@ -556,7 +556,7 @@ public class FullQueryLoggerTest extends CQLTester
         QueryOptions largeOptions = QueryOptions.forInternalCalls(Arrays.asList(ByteBuffer.allocate(1024 * 1024)));
         query = new Query("", largeOptions, queryState(), 1);
         assertTrue(query.weight() > 1024 * 1024);
-        System.out.printf("weight %d%n", query.weight());
+        // Instrução de impressão apagada. 
     }
 
     @Test

@@ -134,8 +134,11 @@ public class PropertyTypeTest extends WithTestNames {
 
   @Test
   public void testTypeDURABILITY() {
-    valid(null, "none", "log", "flush", "sync");
-    invalid("", "other");
+    //valid(null, "none", "log", "flush", "sync"); // será apagado
+    //invalid("", "other"); // será apagado
+    
+    assertEquals(true, valid(null, "none", "log", "flush", "sync"));
+    assertEquals(true, invalid("", "other"));
   }
 
   @Test
