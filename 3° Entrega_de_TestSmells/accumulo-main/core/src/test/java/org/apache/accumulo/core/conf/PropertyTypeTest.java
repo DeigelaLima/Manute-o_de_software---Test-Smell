@@ -22,16 +22,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.google.common.base.Joiner;
 import java.lang.reflect.Method;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.apache.accumulo.core.WithTestNames;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
-import com.google.common.base.Joiner;
+
 
 public class PropertyTypeTest extends WithTestNames {
 
@@ -134,34 +133,34 @@ public class PropertyTypeTest extends WithTestNames {
 
   @Test
   public void testTypeDURABILITY() {
-    valid(null, "none", "log", "flush", "sync");
-    invalid("", "other");
+    assertEquals(true, valid(null, "none", "log", "flush", "sync"));
+    assertEquals(true, invalid("", "other"));
   }
 
   @Test
   public void testTypeGC_POST_ACTION() {
-    valid(null, "none", "flush", "compact");
-    invalid("", "other");
+    assertEquals(true, valid(null, "none", "flush", "compact"));
+    assertEquals(true, invalid("", "other"));
   }
 
   @Test
   public void testTypeFRACTION() {
-    valid(null, "1", "0", "1.0", "25%", "2.5%", "10.2E-3", "10.2E-3%", ".3");
-    invalid("", "other", "20%%", "-0.3", "3.6a", "%25", "3%a");
+    assertEquals(true, valid(null, "1", "0", "1.0", "25%", "2.5%", "10.2E-3", "10.2E-3%", ".3"));
+    assertEquals(true, invalid("", "other", "20%%", "-0.3", "3.6a", "%25", "3%a"));
   }
 
   @Test
   public void testTypeHOSTLIST() {
-    valid(null, "localhost", "server1,server2,server3", "server1:1111,server2:3333",
-        "localhost:1111", "server2:1111", "www.server", "www.server:1111", "www.server.com",
-        "www.server.com:111");
-    invalid(":111", "local host");
+    assertEquals(true, valid(null, "localhost", "server1,server2,server3",
+                "server1:1111,server2:3333", "localhost:1111", "server2:1111", "www.server",
+                "www.server:1111", "www.server.com", "www.server.com:111"));
+    assertEquals(true, invalid(":111", "local host"));
   }
 
   @Test
   public void testTypeBYTES() {
-    valid(null, "1024", "20B", "100K", "1500M", "2G");
-    invalid("1M500K", "1M 2K", "1MB", "1.5G", "1,024K", "", "a", "10%");
+    assertEquals(true, valid(null, "1024", "20B", "100K", "1500M", "2G"));
+    assertEquals(true, invalid("1M500K", "1M 2K", "1MB", "1.5G", "1,024K", "", "a", "10%"));
   }
 
   @Test
