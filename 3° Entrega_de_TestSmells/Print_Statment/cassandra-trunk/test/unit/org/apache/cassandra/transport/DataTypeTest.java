@@ -78,7 +78,7 @@ public class DataTypeTest
         DataType.codec.writeOne(options, dest, version);
         Pair<DataType, Object> result = DataType.codec.decodeOne(dest, version);
 
-        System.out.println(result + "version " + version);
+        // Instrução de impressão apagada.
         int ssize = type.serializedValueSize(result.right, version);
         int esize = version.isSmallerThan(type.getProtocolVersion()) ? 2 + TypeSizes.encodedUTF8Length(result.right.toString()) : 0;
         switch (type)

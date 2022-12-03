@@ -70,8 +70,7 @@ public class RangeMapTest
                 assertFalse("seed:"+seed, intersectionRange.intersects(entry.getKey()));
 
             assertEquals("seed:"+seed, expected, intersection);
-            if (++iterCount % 1000 == 0)
-                 System.out.println(iterCount);
+            // Instrução de Impressão apagada.
         }
     }
 

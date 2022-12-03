@@ -389,7 +389,7 @@ public class BinLogTest
             Thread.sleep(1001);
         }
         List<String> records = readBinLogRecords(path);
-        System.out.println("Records found are " + records);
+        // Instrução de impressão apagada.
         assertTrue(records.size() < 5);
     }
 
